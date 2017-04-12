@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html ng-app="myApp">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <link rel="stylesheet" href="css/ADM-dateTimePicker.css" />
+    <script src="js/angular.js"></script>
+    <script src="js/ADM-dateTimePicker.min.js"></script>
 </head>
 <body>
-$END$
+<adm-dtp ng-model='date' ng-disabled="true"></adm-dtp>
+<script>
+    var app = angular.module('myApp',['ADM-dateTimePicker']);
+    app.config(['ADMdtpProvider', function(ADMdtp) {
+        ADMdtp.setOptions({
+            autoClose: false,
+            calType: 'gregorian',
+            format: 'YYYY/MM/DD hh:mm',
+            default: 'today',
+            freezeInput: 'true',
+            gregorianDic: {
+                title: 'Grégorien',
+                monthsNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                daysNames: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                todayBtn: "今天"
+            }
+    });
+    }]);
+</script>
 </body>
 </html>
